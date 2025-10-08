@@ -1,0 +1,229 @@
+/* Mid Heading */
+
+
+#heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading{
+    height: 4.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* backdrop-filter: blur(10px); */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    /* padding: 0px 3rem; */
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+
+/* Heading Log */
+.heading_logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
+.logo_text>a>h1 {
+    font-style: italic;
+    color: #474747;
+    font-family:var(--font-heading);
+}
+
+
+.heading_icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.heading_icons .cart {
+    font-size: 30px;
+    color: #474747;
+    cursor: pointer;
+    margin-top: 9px;
+    position: relative;
+}
+
+.heading_icons>.cart span {
+    font-size: 20px;
+    position: absolute;
+    left: 1.6rem;
+    top: 13px;
+    /* color: #474747; */
+}
+
+
+.heading_icons .user_icon > i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 30px;
+    color: #474747;
+    cursor: pointer;
+    padding-top:3px ;
+}
+
+.toggle {
+    display: none;
+}
+
+
+/* Heading Menu */
+.heading_menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    font-family: var(--font-menu);
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.menu {
+    position: relative;
+    color: var(--color_font-pra);
+}
+
+.menu::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--color-primary);
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: all .5s ease;
+    bottom: 0;
+    left: 0;
+}
+
+.menu:hover::before {
+    transform: scaleX(1);
+}
+
+
+/* Mobile Menu */
+.mobile_menu {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    background-color: rgba(245, 200, 200, 0.7);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    z-index: 2000;
+    border-radius: 10px;
+    animation: slideUp 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+@keyframes slideUp {
+    from { transform: translateX(-50%) translateY(100%); opacity: 0; }
+    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
+.mobile_close {
+    position: absolute;
+    top: -4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    cursor: pointer;
+    background-color: rgba(245, 200, 200, 0.7);
+    padding: 10px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile_menu_link{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+    color: #474747;
+    font-family: var(--font-text);
+}
+
+
+.mobile_account {
+    margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #474747;
+}
+.mobile_account {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.mobile_account i {
+    margin-right: 0.5rem;
+    font-size: 2rem ;
+}
+
+
+/* Media Queries (Large Device) */
+
+@media screen and (max-width:1024px) {
+
+    .heading_menu {
+        display: flex;
+        gap: .9rem;
+        font-family: var(--font-text);
+        font-weight: 500;
+        font-size: 15px;
+    }
+
+}
+
+/* Media Queries (Small Device) */
+
+@media screen and (max-width:600px) {
+    .heading{
+        padding: 0 1rem;
+    }
+    .heading_menu {
+        display: none;
+    }
+    .user_icon {
+        display: none;
+    }
+
+    .toggle {
+        display: block;
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        color: #474747;
+        padding-top: 4px;
+        cursor: pointer;
+    }
+
+
+}
