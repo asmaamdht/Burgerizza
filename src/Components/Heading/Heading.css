@@ -1,5 +1,3 @@
-/* Mid Heading */
-
 
 #heading {
     display: flex;
@@ -36,9 +34,9 @@
 }
 
 .logo_text>a>h1 {
-    font-style: italic;
     color: #474747;
     font-family:var(--font-heading);
+    font-size:30px;
 }
 
 
