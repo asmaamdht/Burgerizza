@@ -1,9 +1,11 @@
+import Menu from "../Pages/Menu/Menu";
+
 function MenuPage() {
     return (
         <>
         <div id="background_home">
             <section>
-                MenuPage
+                <Menu/>
             </section>
         </div>
         </>

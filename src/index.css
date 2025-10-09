@@ -20,12 +20,22 @@ html {
     --color-primary: #ad343e;
     --color_font-pra: #414536;
 
+    --color_font-heading: #2C2F24;
+    --color_star:#fea408;
+
+
+    /* Colors BG */
+    --color_bg:rgba(255, 255, 255, 0.346);
+
     /* Font */
     --font-heading: "IBM Plex Mono", monospace;
     --font-menu: "Playwrite DE SAS", cursive;
 
     --font-header: "Playfair Display", serif;
     --font-text: "DM Sans", serif;
+
+    /* Box Shadow */
+    --box-shadow: 0 4px 8px 0 #e7adb2b6, 0 6px 20px 0 #e7adb2b6;
 
     /* Responsive */
 
@@ -36,20 +46,28 @@ html {
 }
 
 
-
-
-
-
 .container {
     width: var(--container-width-lg);
     margin: 0 auto; 
+}
+h1,
+h2 {
+    font-family: var(--font-heading);
+    color: var(--color_font-heading);
+}
+
+h4,
+h5,
+h3,
+h6 {
+    font-family: var(--font-header);
 }
 
 
 /* Backgroun HomePage */
 #background_home{
     min-height: 100%;
-    height: auto;
+    height: 100%;
     background-image: url(/src/assets/Images/pizza-bg1.jpg);
     background-position: top left;
     background-size: cover;
@@ -60,7 +78,6 @@ html {
 section {
     position: relative;
     width: 100%;
-    height: auto;
     background: rgba(245, 200, 200, 0.7);
     backdrop-filter: blur(10px);
     padding-top: 5rem;
