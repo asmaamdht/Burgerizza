@@ -3,6 +3,7 @@ import Heading from "../Heading/Heading";
 import HomePage from "../HomePage/HomePage";
 import MenuPage from "../MenuPage/MenuPage";
 import ContactPage from "../ContactPage/ContactPage";
+import ShippingCart from "./ShippingCart/ShippingCart";
 
 function Pages() {
     return (
@@ -14,6 +15,10 @@ function Pages() {
                     <Route path="home" element={<HomePage />} />
                     <Route path="menu" element={<MenuPage/>} />
                     <Route path="contactus" element={<ContactPage/>} />
+
+                    {/* Cart */}
+
+                    <Route path="shippingcart" element={<ShippingCart/>}/>
                 </Routes>
         </BrowserRouter>
         </>

@@ -3,8 +3,8 @@ import './Heading.css'
 import { BsCart3 } from "react-icons/bs";
 import { RiMenu2Line } from "react-icons/ri";
 import { NavLink,Link } from 'react-router-dom';
-import { FaRegUser } from "react-icons/fa";
 import { RiCloseLine } from "react-icons/ri";
+import { RiUser3Line } from "react-icons/ri";
 
 
 import { useState } from "react";
@@ -34,8 +34,9 @@ function Heading() {
 
                 <div className="heading_icons">
 
-                    <Link to="" className='user_icon'>
-                        <i><FaRegUser /></i>
+                    <Link to="/account" className='user_icon'>
+                        <i><RiUser3Line /></i>
+                        <h4>Account</h4>
                     </Link>
 
                     <Link to="shippingcart" className='cart'>
@@ -60,7 +61,7 @@ function Heading() {
                     <NavLink to="/contactus" className="mobile_menu_link" onClick={() => setResponsive(false)}>ContactUs</NavLink>
 
                     <Link to="/account" className="mobile_account" onClick={() => setResponsive(false)}>
-                        <i><FaRegUser /></i>
+                        <i><RiUser3Line /></i>
                         <h4>Account</h4>
                     </Link>
                 </div>

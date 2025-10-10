@@ -21,11 +21,18 @@ html {
     --color_font-pra: #414536;
 
     --color_font-heading: #2C2F24;
+    --color_font:#58b4bb33;
     --color_star:#fea408;
 
 
-    /* Colors BG */
+
+    /* Colors background */
     --color_bg:rgba(255, 255, 255, 0.346);
+    --color_bg_cart:#ad343e5c;
+
+    /* Color border */
+    --color_border:#ad343e5c;
+
 
     /* Font */
     --font-heading: "IBM Plex Mono", monospace;
@@ -41,7 +48,7 @@ html {
 
     --container-width-lg: 85%;
     --container-width-md: 90%;
-    --container-width-sm: 100%;
+    --container-width-sm: 95%;
 
 }
 
@@ -52,7 +59,7 @@ html {
 }
 h1,
 h2 {
-    font-family: var(--font-heading);
+    font-family: var(--font-header);
     color: var(--color_font-heading);
 }
 
@@ -60,7 +67,7 @@ h4,
 h5,
 h3,
 h6 {
-    font-family: var(--font-header);
+    font-family: var(--font-text);
 }
 
 

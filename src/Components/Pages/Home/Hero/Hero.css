@@ -1,8 +1,9 @@
 #hero {
-    height: 89vh;
+    /* height: 89vh; */
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    padding-bottom: 4rem;
 }
 
 .hero {
