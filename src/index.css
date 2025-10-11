@@ -61,6 +61,7 @@ h1,
 h2 {
     font-family: var(--font-header);
     color: var(--color_font-heading);
+    margin-bottom: 0 !important;
 }
 
 h4,
@@ -68,9 +69,16 @@ h5,
 h3,
 h6 {
     font-family: var(--font-text);
+    margin-bottom: 0 !important;
 }
 
+a {
+    text-decoration: none !important;
+}
 
+p{
+    margin-bottom: 0 !important;
+}
 /* Backgroun HomePage */
 #background_home{
     min-height: 100%;

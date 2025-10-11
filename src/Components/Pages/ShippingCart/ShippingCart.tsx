@@ -90,7 +90,7 @@ const ShippingCart:React.FC = () => {
                                 <tr>
                                     <td>
                                         <Link to="checkout">
-                                        <button className='btn'>Proceed to Checkout</button>
+                                        <button className='btn_cart'>Proceed to Checkout</button>
                                         </Link>
                                     </td>
                                 </tr>

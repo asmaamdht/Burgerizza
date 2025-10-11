@@ -142,7 +142,7 @@ tbody tr td {
     font-weight: 400;
     cursor: pointer;
     border: none;
-    padding: 5px;
+    /* padding: 5px; */
     background: none;
     font-size: 20px;
     color: var(--color_font-pra);
@@ -288,13 +288,14 @@ tbody tr td {
 
 .cart_table_right {
     border: 2px solid var(--color_border);
-    padding: 1rem;
+    padding: 1rem !important;
     background-color: var(--color_bg);
-    border-radius: 10px;
+    border-radius: 10px !important;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+    border-collapse: separate;
 }
 
 .table_head_right tr th {
@@ -324,9 +325,10 @@ tbody tr td {
     font-weight: 500;
 }
 
-tfoot tr td button {
+tfoot tr td .btn_cart {
     width: 100%;
-    padding: 10px 15px;
+    padding: 7px 0;
+    margin-top: 10px;
     background: var(--color-primary);
     border: 1px solid var(--color-primary);
     border-radius: 5px;

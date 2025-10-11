@@ -27,7 +27,7 @@ function Heading() {
                 <div className="heading_menu" >
                     <NavLink to="/home" className="menu">Home</NavLink>
                     <NavLink to="/menu"  className="menu">Menu</NavLink>
-                    <NavLink to="/contactus" className="menu">ContactUs</NavLink>
+                    <NavLink to="/contactus" className="menu">Contact</NavLink>
                 </div>
 
 
@@ -58,7 +58,7 @@ function Heading() {
                     </div>
                     <NavLink to="/home" className="mobile_menu_link" onClick={() => setResponsive(false)}>Home</NavLink>
                     <NavLink to="/menu" className="mobile_menu_link" onClick={() => setResponsive(false)}>Menu</NavLink>
-                    <NavLink to="/contactus" className="mobile_menu_link" onClick={() => setResponsive(false)}>ContactUs</NavLink>
+                    <NavLink to="/contactus" className="mobile_menu_link" onClick={() => setResponsive(false)}>Contact</NavLink>
 
                     <Link to="/account" className="mobile_account" onClick={() => setResponsive(false)}>
                         <i><RiUser3Line /></i>

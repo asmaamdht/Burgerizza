@@ -32,7 +32,7 @@
 }
 .hero_text h1 {
     width: 500px;
-    font-weight: 400;
+    font-weight: 400 ;
     font-size: 65px;
     font-family: var(--font-header);
     line-height: 1.2;
@@ -107,7 +107,7 @@
     font-family: var(--font-text);
 }
 .Hero_star {
-    color: #FFD700;
+    color: var(--color_star);
 }
 
 .hero_img {
