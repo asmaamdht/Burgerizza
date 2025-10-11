@@ -79,8 +79,8 @@
 }
 
 .hero_card_img {
-    width: 140px;
-    height: 120px;
+    width: 120px;
+    height: 110px;
     display: flex;
     justify-content: center;
     align-items: center;

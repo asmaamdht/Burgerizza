@@ -19,7 +19,7 @@ function Hero() {
                         <div className="hero_cards">
                             <div className="hero_card">
                                 <div className="hero_card_img">
-                                    <img src="/src/assets/Images/Hero_img/hero_img1.png" alt="" />
+                                    <img src="/src/assets/Images/menu_img/dessert_img1.png" alt="" />
                                 </div>
                                 <div className="hero_card_text">
                                     <p>
@@ -37,7 +37,7 @@ function Hero() {
                             </div>
                             <div className="hero_card">
                                 <div className="hero_card_img">
-                                    <img src="/src/assets/Images/Hero_img/hero_img3.png" alt="" />
+                                    <img src="/src/assets/Images/menu_img/burger_img1.png" alt="" />
                                 </div>
                                 <div className="hero_card_text">
                                     <p>
@@ -55,7 +55,7 @@ function Hero() {
                             </div>
                             <div className="hero_card">
                                 <div className="hero_card_img">
-                                    <img src="/src/assets/Images/Hero_img/hero_img2.png" alt="" />
+                                    <img src="/src/assets/Images/menu_img/juice_img1.png" alt="" />
                                 </div>
                                 <div className="hero_card_text">
                                     <p>
