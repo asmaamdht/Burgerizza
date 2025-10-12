@@ -8,13 +8,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import type { RootState, AppDispatch } from '../../../Store/Store';
 import { getAllMenuData } from '../../../Store/MenuSlice';
 import {add, increase, decrease} from '../../../Store/CartSlice';
+import { useNavigate } from 'react-router-dom'
 
 function Menu() {
     // Menu Active Filter
 
+    const user = useSelector((state: RootState) => state.user);
     const dispatch =useDispatch<AppDispatch>();
     const { menuData, loading, error } = useSelector((state: RootState) => state.menu);
-
+    const navigate = useNavigate();
     const cart = useSelector((state:RootState) => state.cart);
 
     const [activeFilter, setActiveFilter] = useState<string>("Menu");
@@ -27,6 +29,11 @@ function Menu() {
 
     // Add Items
     const handleAddClick = (item: MenuType) => {
+        if (!user) {
+            alert("You need to login first!");
+            navigate("/login");
+            return;
+        }
         dispatch(add(item));
     };
     const handleIncrement = (id:number) => {

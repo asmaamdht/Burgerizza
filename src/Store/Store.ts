@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import CartReducer from '../Store/CartSlice';
+import CartReducer from './CartSlice';
 import MenuReducer from './MenuSlice';
 
-import userReducer from '../Store/CartSlice';
-import resetReducer from '../Store/Userslice';
+import userReducer from './CartSlice';
+import resetReducer from './Userslice';
 
 
 

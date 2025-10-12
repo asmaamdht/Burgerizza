@@ -5,6 +5,10 @@ import MenuPage from "../MenuPage/MenuPage";
 import ContactPage from "../ContactPage/ContactPage";
 import ShippingCart from "./ShippingCart/ShippingCart";
 import CheckOut from "./ShippingCart/CheckOut/CheckOut";
+import Login from "../Auth/Login/Login";
+import Register from "../Auth/Register/Register";
+import ForgetPassword from "../Auth/ForgetPassword/ForgetPassword";
+import ResetPassword from "../Auth/ResetPassword/ResetPassword";
 
 function Pages() {
     return (
@@ -21,6 +25,15 @@ function Pages() {
 
                     <Route path="shippingcart" element={<ShippingCart/>}/>
                     <Route path="shippingcart/checkout" element={<CheckOut/>}/>
+
+
+                    {/* Auth */}
+
+                    <Route path="login" element={<Login/>}   />
+                    <Route path="register" element={<Register/>}   />
+                    <Route path="forget" element={<ForgetPassword/>}   />
+                    <Route path="reset" element={<ResetPassword/>}   />
+                    
                 </Routes>
         </BrowserRouter>
         </>
