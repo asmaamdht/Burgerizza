@@ -6,17 +6,22 @@ import { NavLink,Link } from 'react-router-dom';
 import { RiCloseLine } from "react-icons/ri";
 import { RiUser3Line } from "react-icons/ri";
 
-
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../Store/Store";
 
 function Heading() {
 
     const [responsive, setResponsive] = useState(false);
+    const cart = useSelector((state: RootState) => state.cart);
+
+
+    // const cartQuantity =cart.reduce((total, item) => total + item.quantity, 0)
 
     return (
         <>
         <nav id="heading">
-            <div className="heading container">
+            <div className="heading container_box">
 
                 <div className="heading_logo">
                     <div className="logo_text">
@@ -40,7 +45,7 @@ function Heading() {
                     </Link>
 
                     <Link to="shippingcart" className='cart'>
-                        <i><BsCart3 /></i>
+                        <i><BsCart3 /> {cart.length > 0 && <span>{cart.length}</span>}</i>
                     </Link>
 
                     <i className='toggle' onClick={() => setResponsive(true)}><RiMenu2Line /></i>

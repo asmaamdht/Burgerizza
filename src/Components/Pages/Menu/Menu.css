@@ -107,6 +107,7 @@ button.active p {
     background-color: var(--color_bg);
     box-shadow: var(--box-shadow);
     width: 250px;
+    min-height: 250px;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -118,17 +119,23 @@ button.active p {
 
 .menu_items .menu_item .menu_item_img {
     width: 100%;
+    height:220px;
     overflow: hidden;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .menu_items .menu_item .menu_item_img img {
-    width: 100%;
-    height: 100%;
+    width: 190px; 
+    height: auto;
+    object-fit: contain;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+
 }
 
 
@@ -144,19 +151,20 @@ button.active p {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
 }
 .menu_item_data .menu_item_col1 > h3 {
     color: rgb(71, 71, 71);
-    font-size:20px;
-    font-weight:bold;
+    font-size:18px;
+    font-weight:500;
 }
 .menu_item_data .menu_item_col1 .item_star {
-    /* padding-top: 5px; */
+    padding-bottom: 5px;
     color: var(--color_star);
 }
 
 .menu_item_data .menu_item_col2>p {
-    color: rgb(120, 120, 120);
+    color: rgba(103, 103, 103, 1);
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 0px;
@@ -190,7 +198,7 @@ button.active p {
 
 .menu_item_data .menu_item_col3 .menu_item_btn {
     padding: 3px 10px;
-    height: 26px;
+    height: 30px;
     font-size: 20px;
     border: none;
     background-color: var(--color-primary);
@@ -227,9 +235,10 @@ button.active p {
     background-color: transparent;
     border: none;
     color: white;
-    font-size: 15px;
+    font-size: 16px;
+    font-weight:500;
     cursor: pointer;
-    height: 26px;
+    height: 30px;
     padding: 0 10px;
 }
 

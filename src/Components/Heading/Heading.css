@@ -61,9 +61,10 @@
 .heading_icons>.cart span {
     font-size: 20px;
     position: absolute;
-    left: 1.6rem;
-    top: 13px;
-    /* color: #474747; */
+    left: 1.9rem;
+    top: 19px;
+    color: #474747;
+    font-weight:500;
 }
 
 .heading_icons .user_icon {

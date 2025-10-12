@@ -6,7 +6,7 @@ function Hero() {
     return (
         <>
             <div id="hero">
-                <div className="hero container">
+                <div className="hero container_box">
                     <div className="hero_right">
                         <div className="hero_text">
                             <p>Welcome</p>
@@ -79,9 +79,6 @@ function Hero() {
                         <img className="hero_img_left" src="/src/assets/Images/Hero_img/hero-bg3.png" alt="" />
                     </div>
                 </div>
-
-
-
 
             </div>
         </>

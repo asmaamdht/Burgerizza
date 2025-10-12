@@ -4,6 +4,7 @@ import HomePage from "../HomePage/HomePage";
 import MenuPage from "../MenuPage/MenuPage";
 import ContactPage from "../ContactPage/ContactPage";
 import ShippingCart from "./ShippingCart/ShippingCart";
+import CheckOut from "./ShippingCart/CheckOut/CheckOut";
 
 function Pages() {
     return (
@@ -19,6 +20,7 @@ function Pages() {
                     {/* Cart */}
 
                     <Route path="shippingcart" element={<ShippingCart/>}/>
+                    <Route path="shippingcart/checkout" element={<CheckOut/>}/>
                 </Routes>
         </BrowserRouter>
         </>

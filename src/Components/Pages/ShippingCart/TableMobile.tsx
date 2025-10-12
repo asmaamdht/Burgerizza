@@ -1,27 +1,45 @@
 import React from "react";
 import "./ShippingCart.css";
 import { RxCross2 } from "react-icons/rx";
+import { useDispatch} from 'react-redux';
+import { increase, remove, decreaseCart } from '../../../Store/CartSlice';
 
-const TableMobile: React.FC = () => {
+
+const TableMobile: React.FC = ({product}) => {
+    const dispatch =useDispatch();
+
     return (
         <>
         <tr className="tbody_icon">
             <td>         
-            <i><RxCross2 /></i>
+            <i onClick={()=> dispatch(remove(product.id))}><RxCross2 /></i>
             </td>
         </tr>
         <tr>
             <th rowSpan={2} className="table_product_img_response">
-            <img src="/src/assets/Images/menu_img/burger_img1.png" alt="" />
+            <img src={product.image} alt="" />
             </th>
-            <td colSpan={2} className="product_info">
-            <h4>Title</h4>
-            <p>Lorem ipsum dolor </p>
+            <td colSpan={2} className="product_info_res">
+            <h4>{product.name.substring(0,6)}</h4>
+            <p>{product.description.substring(0,10)} </p>
             </td>
         </tr>
         <tr>
             <th>Price</th>
-            <td className="td_price">EGP 120</td>
+            <td className="td_price">EGP {product.price}</td>
+        </tr>
+
+
+        <tr>
+            <th></th>
+            <th>Quantity</th>
+            <td className='table_quantity'>
+                <div className='table_quantity_td'>
+                    <button onClick={()=> dispatch(decreaseCart(product.id))}>-</button>
+                    <button>{product.quantity}</button>
+                    <button onClick={()=> dispatch(increase(product.id))}>+</button>
+                </div>
+            </td>
         </tr>
         </>
     );
