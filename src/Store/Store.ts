@@ -3,9 +3,11 @@ import { configureStore } from "@reduxjs/toolkit";
 import CartReducer from './CartSlice';
 import MenuReducer from './MenuSlice';
 
-import userReducer from './CartSlice';
-import resetReducer from './Userslice';
+import userReducer from './Userslice';
+import resetReducer from './Resetslice';
 
+
+import checkOutReducer from './CheckOutSlice';
 
 
 export const store = configureStore({
@@ -14,7 +16,9 @@ export const store = configureStore({
         menu: MenuReducer,
         user: userReducer,
         resetuser: resetReducer,
+        checkout: checkOutReducer,
     },
+    devTools: true,
 })
 
 

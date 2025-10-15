@@ -72,8 +72,6 @@ export default function Register() {
 
   return (
     <>
-      <div id="backgroun_home">
-        <section>
           
           <Helmet>
             <meta charSet="utf-8" />
@@ -198,8 +196,6 @@ export default function Register() {
               </div>
             </div>
           </div>
-        </section>
-      </div>
     </>
   );
 }
