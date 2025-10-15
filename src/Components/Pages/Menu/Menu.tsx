@@ -11,7 +11,6 @@ import {add, increase, decrease} from '../../../Store/CartSlice';
 import { useNavigate } from 'react-router-dom'
 
 function Menu() {
-    // Menu Active Filter
 
     const user = useSelector((state: RootState) => state.user);
     const dispatch =useDispatch<AppDispatch>();
@@ -20,6 +19,8 @@ function Menu() {
     const cart = useSelector((state:RootState) => state.cart);
 
     const [activeFilter, setActiveFilter] = useState<string>("Menu");
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const itemsPerPage = 12; 
 
     useEffect(()=> {
         dispatch(getAllMenuData());
@@ -44,9 +45,30 @@ function Menu() {
         dispatch(decrease(id));
     };
 
+    const handleProductClick = (id: number) => {
+        navigate(`/menu/${id}`);
+    };
+
 
     const filteredMenuData = activeFilter === "Menu"
     ? menuData : menuData.filter((item) => item.category === activeFilter);
+
+    // ✅ Pagination Logic
+    const totalPages = Math.ceil(filteredMenuData.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const currentItems = filteredMenuData.slice(startIndex, endIndex);
+
+    // ✅ Reset to page 1 when filter changes
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [activeFilter]);
+
+    // ✅ Pagination handlers
+    const handlePageChange = (page: number) => {
+        setCurrentPage(page);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
 
 
@@ -87,14 +109,22 @@ function Menu() {
                         ): error? (
                             <p>{error}</p>
                         ):(
-                            filteredMenuData.map((item:MenuType)=> (
+                            currentItems.map((item:MenuType)=> (
                                 <div className="menu_item" key={item.id}>
-                                    <div className="menu_item_img">
+                                    <div 
+                                        className="menu_item_img"
+                                        onClick={() => handleProductClick(item.id)} 
+                                        style={{ cursor: "pointer" }}
+                                    >
                                         <img src={item.image} alt="" />
                                     </div>
 
                                     <div className="menu_item_data">
-                                        <div className="menu_item_col1">
+                                        <div 
+                                            className="menu_item_col1"
+                                            onClick={() => handleProductClick(item.id)}
+                                            style={{ cursor: "pointer" }}
+                                        >
                                             <h3>{item.name.length > 12 ? item.name.slice(0, 12) + "..." : item.name}</h3>
                                             <div className="item_star">
                                                 <FaStar />
@@ -104,7 +134,7 @@ function Menu() {
                                             </div>
                                         </div>
                                         <div className="menu_item_col2">
-                                            <p>{item.description.substring(0, 25)}...</p>
+                                            <p>{item.description?.substring(0, 25)}...</p>
                                         </div>
 
 
@@ -139,6 +169,86 @@ function Menu() {
 
 
                 </div>
+
+                {/* ✅ Pagination */}
+                {totalPages > 1 && (
+                    <div className="pagination-container" style={{ 
+                        display: 'flex', 
+                        justifyContent: 'center', 
+                        alignItems: 'center', 
+                        marginTop: '40px',
+                        gap: '10px'
+                    }}>
+                        {/* Previous Button */}
+                        <button
+                            className="btn"
+                            onClick={() => handlePageChange(currentPage - 1)}
+                            disabled={currentPage === 1}
+                            style={{ 
+                                padding: '8px 16px',
+                                borderRadius: '8px',
+                                border: '1px solid #ad343e',
+                                backgroundColor: currentPage === 1 ? 'rgba(255, 255, 255, 0.346)' : 'transparent',
+                                color: currentPage === 1 ? '#6c757d' : '#ad343e',
+                                cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
+                                transition: 'all 0.3s ease'
+                            }}
+                        >
+                            Previous
+                        </button>
+
+                        {/* Page Numbers */}
+                        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                            <button
+                                key={page}
+                                className="btn"
+                                onClick={() => handlePageChange(page)}
+                                style={{
+                                    padding: '8px 12px',
+                                    borderRadius: '8px',
+                                    border: '1px solid #ad343e',
+                                    backgroundColor: currentPage === page ? '#ad343e' : 'transparent',
+                                    color: currentPage === page ? 'white' : '#ad343e',
+                                    cursor: 'pointer',
+                                    minWidth: '40px',
+                                    transition: 'all 0.3s ease'
+                                }}
+                            >
+                                {page}
+                            </button>
+                        ))}
+
+                        {/* Next Button */}
+                        <button
+                            className="btn"
+                            onClick={() => handlePageChange(currentPage + 1)}
+                            disabled={currentPage === totalPages}
+                            style={{ 
+                                padding: '8px 16px',
+                                borderRadius: '8px',
+                                border: '1px solid #ad343e',
+                                backgroundColor: currentPage === totalPages ? 'rgba(255, 255, 255, 0.346)' : 'transparent',
+                                color: currentPage === totalPages ? '#6c757d' : '#ad343e',
+                                cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
+                                transition: 'all 0.3s ease'
+                            }}
+                        >
+                            Next
+                        </button>
+                    </div>
+                )}
+
+                {/* ✅ Page Info */}
+                {totalPages > 1 && (
+                    <div className="page-info" style={{ 
+                        textAlign: 'center', 
+                        marginTop: '20px',
+                        color: '#6c757d',
+                        fontSize: '14px'
+                    }}>
+                        Showing {startIndex + 1} to {Math.min(endIndex, filteredMenuData.length)} of {filteredMenuData.length} items
+                    </div>
+                )}
             </div>
         </div>
         </>
