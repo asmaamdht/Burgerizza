@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../../../Store/Store";
 import { getAllMenuData } from "../../../Store/MenuSlice";
 import { add, increase, decrease } from "../../../Store/CartSlice";
-import Loading from "./Loading";
+// import Loading from "./Loading";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -46,7 +46,7 @@ export default function ProductDetails() {
         .slice(0, 4)
     : [];
 
-  if (loading) return <Loading />;
+  // if (loading) return <Loading />;
 
   if (!product) return <div className="text-center mt-5">Product not found</div>;
 

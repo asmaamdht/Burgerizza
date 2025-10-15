@@ -15,14 +15,9 @@ function Pages() {
     return (
         <>
         <BrowserRouter>
-                <Heading />
+           
                 <Routes>
-                    <Route path="/" element={<HomePage/>} />
-                    <Route path="home" element={<HomePage />} />
-                    <Route path="menu" element={<MenuPage/>} />
-                    <Route path="menu/:id" element={<ProductDetailsPage />} />
-                    <Route path="contactus" element={<ContactPage/>} />
-
+   
                     {/* Cart */}
 
                     <Route path="shippingcart" element={<ShippingCart/>}/>
