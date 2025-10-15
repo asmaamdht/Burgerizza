@@ -7,8 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import { useDispatch } from "react-redux";
-import { setuser } from "../../../Store/Userslice"; 
-
+import { setuser } from "../../../Store/Userslice";
 
 type ILoginForm = {
   email: string;
@@ -26,21 +25,15 @@ export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-
   const schema = z.object({
     email: z.email("Invalid email"),
     password: z.string().regex(/^[A-Z][a-z0-9]{3,8}$/, "Invalid password"),
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState
-  } = useForm<ILoginForm>({
+  const { register, handleSubmit, formState } = useForm<ILoginForm>({
     defaultValues: { email: "", password: "" },
     resolver: zodResolver(schema),
   });
-
 
   const mutation = useMutation<IUser, Error, ILoginForm>({
     mutationFn: async ({ email, password }) => {
@@ -64,22 +57,19 @@ export default function Login() {
       };
     },
 
-
     onSuccess: (user) => {
       // console.log(user);
-      dispatch(setuser(user)); 
-      localStorage.setItem("user", JSON.stringify(user)); 
-      navigate("/"); 
+      dispatch(setuser(user));
+      localStorage.setItem("user", JSON.stringify(user));
+      navigate("/");
       console.log("Signin successful", user);
     },
   });
 
-  
   const handleLogin: SubmitHandler<ILoginForm> = (values) => {
     mutation.mutate(values);
   };
 
-  
   return (
     <>
       <Helmet>
@@ -94,7 +84,6 @@ export default function Login() {
           style={{ minHeight: "600px" }}
         >
           <div className="row align-items-center h-100">
-            
             <div className="col-md-6 h-100">
               <img
                 src="/user-verification-unauthorized-access-prevention-private-account-authentication-cyber-security-people-entering-login-password-safety-measures_335657-1592.jpg"
@@ -103,10 +92,11 @@ export default function Login() {
               />
             </div>
 
-            
             <div className="col-md-6 d-flex justify-content-center align-items-center h-100">
               <div className="border p-4 rounded w-75 shadow-sm">
-                <h2 className="text-center mb-4 text-danger fw-bold">Sign in</h2>
+                <h2 className="text-center mb-4 text-danger fw-bold">
+                  Sign in
+                </h2>
 
                 <form onSubmit={handleSubmit(handleLogin)}>
                   {mutation.isError ? (
@@ -114,7 +104,7 @@ export default function Login() {
                       {(mutation.error as Error).message}
                     </p>
                   ) : (
-                    ''
+                    ""
                   )}
 
                   <div className="form-floating mb-3">
@@ -126,7 +116,7 @@ export default function Login() {
                       placeholder="name@example.com"
                     />
                     <label htmlFor="floatingEmailInput">Email address</label>
-                     {formState.errors.email && (
+                    {formState.errors.email && (
                       <p className="alert alert-danger p-1 mt-1 text-center">
                         {formState.errors.email.message}
                       </p>
@@ -142,7 +132,7 @@ export default function Login() {
                       placeholder="Password"
                     />
                     <label htmlFor="floatingPassword">Password</label>
-                     {formState.errors.password && (
+                    {formState.errors.password && (
                       <p className="alert alert-danger p-1 mt-1 text-center">
                         {formState.errors.password.message}
                       </p>

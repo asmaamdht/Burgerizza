@@ -15,7 +15,7 @@ function CartEmpty(){
                     </p>
                     <div style={{ textAlign: "center" }}>
                         <Link to="/menu">
-                            <button style={{border:"none", padding:"5px 20px", background:"#ad343e", color:"white", borderRadius:"10px"}}>Go to Menu</button>
+                            <button style={{border:"none", padding:"5px 20px", background:"#ad343e", color:"white", borderRadius:"10px"}}>Back to Menu</button>
                         </Link>
                     </div>
                 </div>

@@ -16,3 +16,24 @@ export type Menu ={
 export type CartItem = Menu & {
     quantity: number;
 };
+
+
+
+export type CheckOutData = {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    address: string;
+    city: string;
+    otherInformation: string;
+    radioBox: boolean;
+
+
+    subTotal: number;
+    shipping: number;
+    total: number;
+}
+
+
+

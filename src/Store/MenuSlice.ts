@@ -15,7 +15,6 @@ const initialState: MenuState = {
 };
 
     // get data from API 
-    
     export const getAllMenuData =createAsyncThunk("getAllMenuData",async ()=> {
         const menuData = await axios.get<Menu[]>("https://68e3e5f38e116898997a5f72.mockapi.io/items");
         const allMenuData = menuData.data.map(item => ({

@@ -32,7 +32,7 @@ const ShippingCart:React.FC = () => {
 
             <div className="cart_container container_box">
                 <div className="cart_title">
-                    <h1>Shipping Cart</h1>
+                    <h1>Menu Cart</h1>
                 </div>
             </div>
 
