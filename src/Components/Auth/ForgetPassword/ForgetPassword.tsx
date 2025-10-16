@@ -11,123 +11,120 @@ import {Helmet} from 'react-helmet'
 
 
 type ForgetPasswordForm = {
-  email: string;
+    email: string;
 };
 
 
 type User = {
-  id: string;
-  email?: string;
+    id: string;
+    email?: string;
 };
 
 export default function ForgetPassword() {
-  const schema = z.object({
-    email: z.email('Invalid email'),
-  });
 
-  const form = useForm<ForgetPasswordForm>({
+
+    const schema = z.object({
+        email: z.email('Invalid email'),
+    });
+
+    const form = useForm<ForgetPasswordForm>({
     defaultValues: { email: '' },
     resolver: zodResolver(schema),
-  });
+    });
 
-  const { register, handleSubmit, formState } = form;
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+    const { register, handleSubmit, formState } = form;
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-  const mutation = useMutation<User, Error, ForgetPasswordForm>({
-    mutationFn: async (values) => {
-      const res = await axios.get<User[]>(
-        'https://68e4e1228e116898997d6e79.mockapi.io/signup'
-      );
-      const users = res.data;
-      const foundUser = users.find((u) => u.email === values.email);
-      if (!foundUser) throw new Error('Email not found');
-      return { id: foundUser.id };
-    },
-    onSuccess: (data) => {
-      dispatch(setresetuser(data));
-      navigate('/reset');
-    },
-  });
+    const mutation = useMutation<User, Error, ForgetPasswordForm>({
+        mutationFn: async (values) => {
+        const res = await axios.get<User[]>(
+            'https://68e4e1228e116898997d6e79.mockapi.io/signup'
+        );
+        const users = res.data;
+        const foundUser = users.find((u) => u.email === values.email);
+        if (!foundUser) throw new Error('Email not found');
+        return { id: foundUser.id };
+        },
+        onSuccess: (data) => {
+        dispatch(setresetuser(data));
+        navigate('/reset');
+        },
+    });
 
-  const handleForget: SubmitHandler<ForgetPasswordForm> = (values) => {
-    mutation.mutate(values);
-  };
+    const handleForget: SubmitHandler<ForgetPasswordForm> = (values) => {
+        mutation.mutate(values);
+    };
 
-  return (
-    <>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>ForgetPassword</title>
-        <link rel="canonical" href="http://mysite.com/example" />
-      </Helmet>
+    return (
+        <>
+        <Helmet>
+            <meta charSet="utf-8" />
+            <title>ForgetPassword</title>
+            <link rel="canonical" href="http://mysite.com/example" />
+        </Helmet>
 
-      <div className="min-vh-100 d-flex justify-content-center align-items-center">
-        <div
-          className="container bg-white p-0 rounded shadow-lg"
-          style={{ minHeight: '600px' }}
-        >
-          <div className="row align-items-center h-100">
-           
-            <div className="col-md-6 h-100">
-              <img
-                src="/forgot-password-concept-illustration_114360-1010.jpg"
-                className="img-fluid w-100 h-100"
-                alt="bg"
-              />
+        <div className=" min-vh-100 d-flex justify-content-center align-items-center">
+
+        <div className="container p-0 rounded" style={{ minHeight: '400px' }}>
+
+                <div className="row align-items-center h-100">
+
+                <div className="d-flex justify-content-center align-items-center h-100">
+                <div className="reset_form p-4 rounded w-50">
+
+                        <h2 className="text-center mb-5 text-danger fw-bold">
+                        Forget Password
+                        </h2>
+
+                        <form onSubmit={handleSubmit(handleForget)}>
+                            {mutation.isError ? (
+                                <p className="alert alert-danger p-1 mt-1 text-center">
+                                {(mutation.error as Error).message}
+                                </p>
+                            ) : (
+                                ''
+                            )}
+
+                            <div className="login_input mb-4">
+                                <input
+                                type="email"
+                                {...register('email')}
+                                className="form-control"
+                                id="floatingEmailInput"
+                                placeholder="name@example.com"
+                                />
+                                {/* <label htmlFor="floatingEmailInput">Email address</label> */}
+                                {formState.errors.email && (
+                                <p className="alert_error">
+                                    {formState.errors.email.message}
+                                </p>
+                                )}
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={mutation.isPending}
+                                className="btn login_btn w-100 d-flex justify-content-center align-items-center rounded-4"
+                            >
+                                {mutation.isPending ? (
+                                <div className="spinner-border" role="status">
+                                    <span className="visually-hidden">Loading...</span>
+                                </div>
+                                ) : (
+                                'Reset Password'
+                                )}
+                            </button>
+
+                        </form>
+                    </div>
+                    </div>
+                
+
+                </div> 
             </div>
-
-         
-            <div className="col-md-6 d-flex justify-content-center align-items-center h-100">
-              <div className="border p-4 rounded w-75 shadow-sm">
-                <h2 className="text-center mb-4 text-danger fw-bold">
-                  Forget Password
-                </h2>
-
-                <form onSubmit={handleSubmit(handleForget)}>
-                  {mutation.isError ? (
-                    <p className="alert alert-danger p-1 mt-1 text-center">
-                      {(mutation.error as Error).message}
-                    </p>
-                  ) : (
-                    ''
-                  )}
-
-                  <div className="form-floating mb-3">
-                    <input
-                      type="email"
-                      {...register('email')}
-                      className="form-control"
-                      id="floatingEmailInput"
-                      placeholder="name@example.com"
-                    />
-                    <label htmlFor="floatingEmailInput">Email address</label>
-                    {formState.errors.email && (
-                      <p className="alert alert-danger p-1 mt-1 text-center">
-                        {formState.errors.email.message}
-                      </p>
-                    )}
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={mutation.isPending}
-                    className="btn btn-danger w-100 d-flex justify-content-center align-items-center"
-                  >
-                    {mutation.isPending ? (
-                      <div className="spinner-border" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                      </div>
-                    ) : (
-                      'Reset Password'
-                    )}
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </>
-  );
+
+        </>
+    );
 }

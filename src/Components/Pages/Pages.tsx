@@ -9,6 +9,7 @@ import Register from "../Auth/Register/Register";
 import ForgetPassword from "../Auth/ForgetPassword/ForgetPassword";
 import ResetPassword from "../Auth/ResetPassword/ResetPassword";
 import CheckOut from "./ShippingCart/CheckOut/CheckOut";
+import UserAccount from "./UserAccount/UserAccount";
 
 
 
@@ -27,6 +28,9 @@ function AppRoutes() {
                 <Route path="home" element={<HomePage />} />
                 <Route path="menu" element={<MenuPage/>} />
                 <Route path="contactus" element={<ContactPage/>} />
+                <Route path="useraccount" element={<UserAccount/>} />
+
+
 
                 {/* Cart */}
 

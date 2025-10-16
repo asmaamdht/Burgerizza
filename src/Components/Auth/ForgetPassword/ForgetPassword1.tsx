@@ -1,0 +1,136 @@
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import { useForm } from 'react-hook-form';
+import type { SubmitHandler } from "react-hook-form";
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import z from 'zod';
+import { setresetuser } from '../../../Store/Resetslice';
+import {Helmet} from 'react-helmet'
+
+
+type ForgetPasswordForm = {
+  email: string;
+};
+
+
+type User = {
+  id: string;
+  email?: string;
+};
+
+export default function ForgetPassword() {
+  const schema = z.object({
+    email: z.email('Invalid email'),
+  });
+
+  const form = useForm<ForgetPasswordForm>({
+    defaultValues: { email: '' },
+    resolver: zodResolver(schema),
+  });
+
+  const { register, handleSubmit, formState } = form;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const mutation = useMutation<User, Error, ForgetPasswordForm>({
+    mutationFn: async (values) => {
+      const res = await axios.get<User[]>(
+        'https://68e4e1228e116898997d6e79.mockapi.io/signup'
+      );
+      const users = res.data;
+      const foundUser = users.find((u) => u.email === values.email);
+      if (!foundUser) throw new Error('Email not found');
+      return { id: foundUser.id };
+    },
+    onSuccess: (data) => {
+      dispatch(setresetuser(data));
+      navigate('/reset');
+    },
+  });
+
+  const handleForget: SubmitHandler<ForgetPasswordForm> = (values) => {
+    mutation.mutate(values);
+  };
+
+  return (
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>ForgetPassword</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+
+      <div className="min-vh-100 d-flex justify-content-center align-items-center">
+        <div
+          className="container bg-white p-0 rounded "
+          style={{ minHeight: '600px' }}
+        >
+          <div className=" align-items-center h-100">
+  
+            {/* <div className="col-md-6 h-100">
+              <img
+                src="/forgot-password-concept-illustration_114360-1010.jpg"
+                className="img-fluid w-100 h-100"
+                alt="bg"
+              />
+            </div> */}
+
+            <div className="d-flex justify-content-center align-items-center h-100">
+              <div className="border p-4 rounded w-75 shadow-sm">
+                <h2 className="text-center mb-4 text-danger fw-bold">
+                  Forget Password
+                </h2>
+
+                <form onSubmit={handleSubmit(handleForget)}>
+                  {mutation.isError ? (
+                    <p className="alert alert-danger p-1 mt-1 text-center">
+                      {(mutation.error as Error).message}
+                    </p>
+                  ) : (
+                    ''
+                  )}
+
+                  <div className="form-floating mb-3">
+                    <input
+                      type="email"
+                      {...register('email')}
+                      className="form-control"
+                      id="floatingEmailInput"
+                      placeholder="name@example.com"
+                    />
+                    <label htmlFor="floatingEmailInput">Email address</label>
+                    {formState.errors.email && (
+                      <p className="alert alert-danger p-1 mt-1 text-center">
+                        {formState.errors.email.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={mutation.isPending}
+                    className="btn btn-danger w-100 d-flex justify-content-center align-items-center"
+                  >
+                    {mutation.isPending ? (
+                      <div className="spinner-border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                      </div>
+                    ) : (
+                      'Reset Password'
+                    )}
+                  </button>
+                </form>
+              </div>
+            </div>
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}

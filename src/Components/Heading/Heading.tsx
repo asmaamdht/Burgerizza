@@ -39,7 +39,7 @@ function Heading() {
 
                 <div className="heading_icons">
 
-                    <Link to="/account" className='user_icon'>
+                    <Link to="/useraccount" className='user_icon'>
                         <i><RiUser3Line /></i>
                         <h4>Account</h4>
                     </Link>
@@ -65,7 +65,7 @@ function Heading() {
                     <NavLink to="/menu" className="mobile_menu_link" onClick={() => setResponsive(false)}>Menu</NavLink>
                     <NavLink to="/contactus" className="mobile_menu_link" onClick={() => setResponsive(false)}>Contact</NavLink>
 
-                    <Link to="/account" className="mobile_account" onClick={() => setResponsive(false)}>
+                    <Link to="/useraccount" className="mobile_account" onClick={() => setResponsive(false)}>
                         <i><RiUser3Line /></i>
                         <h4>Account</h4>
                     </Link>
