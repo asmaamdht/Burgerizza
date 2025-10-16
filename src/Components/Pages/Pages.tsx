@@ -18,7 +18,7 @@ const AppRoutes: React.FC = () => {
 
   return (
     <>
-      {/* عرض الهيدر فقط لو الصفحة مش من صفحات auth */}
+      
       {!withoutHeadingPages.includes(location.pathname) && <Heading />}
 
       <Routes>
