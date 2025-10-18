@@ -9,6 +9,7 @@ const initialState: CartState = [];
 const cartSlice = createSlice({
     name:'cart',
     initialState:initialState,
+    
     reducers: {
         add: (state, action:PayloadAction<Menu>)=> {
             const exist = state.find(item => item.id === action.payload.id);

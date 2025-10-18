@@ -15,8 +15,9 @@ import CartEmpty from './CartEmpty';
 const ShippingCart:React.FC = () => {
 
     const cart =useSelector((state: RootState)=> state.cart);
-    const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
+    
+    const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
     const cartQuantity =cart.reduce((total, item) => total + item.quantity, 0)
 
 
@@ -39,7 +40,7 @@ const ShippingCart:React.FC = () => {
 
             <div id="cart_shipping">
 
-                <div className="cart_shipping_container container">
+                <div className="cart_shipping_container container_box">
 
                     <table className="cart_table_left">
                         

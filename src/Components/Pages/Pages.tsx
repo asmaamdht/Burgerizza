@@ -11,6 +11,9 @@ import ForgetPassword from "../Auth/ForgetPassword/ForgetPassword";
 import ResetPassword from "../Auth/ResetPassword/ResetPassword";
 import CheckOut from "./ShippingCart/CheckOut/CheckOut";
 import React from "react";
+import UserProfile from "./UserAccount/UserProfile/UserProfile";
+import UserAccount from "./UserAccount/UserAccount";
+import Orders from "./UserAccount/Orders/Orders";
 
 const AppRoutes: React.FC = () => {
 
@@ -25,14 +28,21 @@ const AppRoutes: React.FC = () => {
         <Routes>
             {/* Main Pages */}
             <Route path="/" element={<HomePage />} />
-            <Route path="home" element={<HomePage />} />
-            <Route path="menu" element={<MenuPage />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/menu" element={<MenuPage />} />
+
+
             <Route path="menu/:id" element={<ProductDetailsPage />} />
-            <Route path="contactus" element={<ContactPage />} />
+            <Route path="/contactus" element={<ContactPage />} />
+            <Route path="/useraccount" element={<UserAccount />}>
+                <Route index element={<UserProfile />} /> 
+                <Route path="orders" element={<Orders />} />
+                <Route path="logout" element={<Register />} />
+            </Route>
 
             {/* Cart */}
-            <Route path="shippingcart" element={<ShippingCart />} />
-            <Route path="shippingcart/checkout" element={<CheckOut />} />
+            <Route path="/shippingcart" element={<ShippingCart />} />
+            <Route path="/shippingcart/checkout" element={<CheckOut />} />
 
             {/* Auth */}
             <Route path="login" element={<Login />} />

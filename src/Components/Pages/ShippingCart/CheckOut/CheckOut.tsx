@@ -201,7 +201,7 @@ function CheckOut() {
                             </div>
 
 
-                                <div className="input_radio input_box">
+                                {/* <div className="input_radio input_box">
                                     <h5> Payment</h5>
                                     <label>
                                         <input type="radio" name="radioBox" 
@@ -212,7 +212,7 @@ function CheckOut() {
                                         />
                                         Cash on Delivery
                                     </label>
-                                </div>
+                                </div> */}
 
                             <button className='btn_order' onClick={handelInputValidation}>Place Order</button>
 
