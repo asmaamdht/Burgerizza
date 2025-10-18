@@ -12,11 +12,19 @@
 
 .footer_col {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 10px;
 }
-
+.footer_col> img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
 .footer .footer_media {
     display: flex;
     gap: 1rem;
@@ -34,6 +42,8 @@
 
 .footer_col_links {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 3rem;
 }
 

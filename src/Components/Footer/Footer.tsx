@@ -12,8 +12,8 @@ const Footer:React.FC = () => {
             <div className="container_box footer">
 
                 <div className="footer_col">
+                    <img src="/src/assets/Images/WhatsApp Image 2025-10-09 at 01.35.21_9da39035.jpg" alt="" />
                     <h2>Burgerizza</h2>
-
                 </div>
 
 
