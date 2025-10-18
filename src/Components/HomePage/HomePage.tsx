@@ -1,4 +1,5 @@
 import Categories from "../Pages/Home/Categories/Categories";
+import Test from "../Pages/Home/Test/Test";
 import Deals from "../Pages/Home/Deals/Deals";
 import Hero from "../Pages/Home/Hero/Hero";
 import OurMenu from "../Pages/Home/OurMenu/OurMenu";
@@ -23,6 +24,9 @@ function HomePage() {
             <QueryClientProvider client={queryClient}>
                 <OurMenu/>
             </QueryClientProvider>
+
+
+            <Test/>
 
         </section>
     </div>

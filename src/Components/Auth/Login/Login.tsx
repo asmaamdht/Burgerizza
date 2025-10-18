@@ -23,6 +23,7 @@ type IUser = {
     username: string;
     email: string;
     password?: string;
+    role: string;
 };
 
 const Login:React.FC = () => {
@@ -55,10 +56,12 @@ const Login:React.FC = () => {
             throw new Error("Incorrect email or password");
         }
 
+
         return {
             id: foundUser.id,
             username: foundUser.username,
             email: foundUser.email,
+            role: foundUser.role
         };
         },
 
@@ -66,7 +69,12 @@ const Login:React.FC = () => {
         // console.log(user);
         dispatch(setuser(user));
         localStorage.setItem("user", JSON.stringify(user));
+        if(user.role==="admin"){
+        navigate("/dashboard");
+        }
+        else{
         navigate("/");
+        }
         console.log("Signin successful", user);
         },
     });

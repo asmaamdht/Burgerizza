@@ -56,10 +56,11 @@ const Register:React.FC = () => {
         if (emailExists) {
             throw new Error("This email is already registered");
         }
+        const userrole ={...newUser,role:"user"};
 
         const postRes = await axios.post(
             "https://68e4e1228e116898997d6e79.mockapi.io/signup",
-            newUser
+            userrole
         );
         return postRes.data;
         },

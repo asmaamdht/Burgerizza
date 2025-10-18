@@ -66,6 +66,9 @@
 }
 
 
+
+
+
 .ourstiries_desc p:nth-of-type(1) {
     font-weight: bold;
     color: var(--color-primary);
@@ -99,4 +102,36 @@
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+}
+
+
+
+/* Media Queries (Media Device) */
+
+@media screen and (max-width:1024px) {
+    .ourstories {
+        gap: 4rem;
+        flex-wrap: wrap;
+    }
+    .ourstories_cards {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 2rem;
+        
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+}
+
+/* Media Queries (Small Device) */
+
+@media screen and (max-width:600px) {
+
+    .ourstiries_desc p:nth-of-type(2) {
+        width: 360px;
+    }
+    .ourstories_img > img {
+        left: 0;
+    }
 }

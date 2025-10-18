@@ -6,6 +6,7 @@ type User = {
   id?: string;
   email: string;
   username: string;
+  role:string;
   // [key: string]: any; // لو فيه حقول إضافية ممكن تتحط هنا
 
 
@@ -13,6 +14,7 @@ type User = {
   re_password?: string;
   location?: string;
   phone?: string;
+
 };
 
 // تعريف نوع state للـ slice
