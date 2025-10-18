@@ -7,6 +7,7 @@ import OurStories from "../Pages/Home/OurStories/OurStories";
 
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import Footer from "../Footer/Footer";
 
 function HomePage() {
 
@@ -24,7 +25,6 @@ function HomePage() {
             <QueryClientProvider client={queryClient}>
                 <OurMenu/>
             </QueryClientProvider>
-
 
             <Test/>
 

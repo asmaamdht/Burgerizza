@@ -15,15 +15,19 @@ import UserProfile from "./UserAccount/UserProfile/UserProfile";
 import UserAccount from "./UserAccount/UserAccount";
 import Orders from "./UserAccount/Orders/Orders";
 
+import Footer from "../Footer/Footer";
+
 const AppRoutes: React.FC = () => {
 
     const location = useLocation();
-    const withoutHeadingPages: string[] = ["/login", "/register", "/forget", "/reset"];
+    const withoutHeaderFooter: string[] = ["/login", "/register", "/forget", "/reset"];
+
+    const headerFooter=!withoutHeaderFooter.includes(location.pathname);
 
     return (
         <>
         
-        {!withoutHeadingPages.includes(location.pathname) && <Heading />}
+        {headerFooter && <Heading />}
 
         <Routes>
             {/* Main Pages */}
@@ -50,6 +54,9 @@ const AppRoutes: React.FC = () => {
             <Route path="forget" element={<ForgetPassword />} />
             <Route path="reset" element={<ResetPassword />} />
         </Routes>
+
+
+        {headerFooter && <Footer />}
         </>
     );
 };
