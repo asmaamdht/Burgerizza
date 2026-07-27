@@ -1,16 +1,16 @@
-import { Helmet } from "react-helmet-async";
+// import { Helmet } from "react-helmet-async";
 import Menu from "../Pages/Menu/Menu";
 
 function MenuPage() {
     return (
         <>
-            <Helmet>
+            {/* <Helmet>
                 <title>Menu</title>
                 <meta
                     name="description"
                     content="Explore our delicious burger menu at Burgerizza. Burgers, sides, drinks, and more!"
                 />
-            </Helmet>
+            </Helmet> */}
 
             <div id="background_home">
                 <section className="section2">

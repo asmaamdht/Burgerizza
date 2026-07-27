@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+// import { Helmet } from "react-helmet-async";
 
 import Categories from "../Pages/Home/Categories/Categories";
 import Test from "../Pages/Home/Test/Test";
@@ -14,13 +14,13 @@ function HomePage() {
 
     return (
         <>
-            <Helmet>
+            {/* <Helmet>
                 <title>Home </title>
                 <meta
                     name="description"
                     content="Welcome to Burgerizza! Discover our delicious burgers, exclusive deals, and amazing stories."
                 />
-            </Helmet>
+            </Helmet> */}
 
             <div id="background_home">
                 <section className="section">

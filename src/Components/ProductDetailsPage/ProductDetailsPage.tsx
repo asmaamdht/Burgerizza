@@ -1,20 +1,20 @@
-import { Helmet } from "react-helmet-async";
+// import { Helmet } from "react-helmet-async";
 import ProductDetails from "../Pages/Menu/ProductDetails";
 
 function ProductDetailsPage() {
     return (
         <>
-            <Helmet>
+            {/* <Helmet>
                 <title>Product Details </title>
                 <meta
                     name="description"
                     content="Check out the delicious details of our burgers at Burgerizza!"
                 />
-            </Helmet>
+            </Helmet> */}
 
             <div id="background_home">
                 <section className="section">
-                <ProductDetails />
+                    <ProductDetails />
                 </section>
             </div>
         </>

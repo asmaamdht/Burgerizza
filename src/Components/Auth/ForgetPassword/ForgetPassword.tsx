@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import z from 'zod';
 import { setresetuser } from '../../../Store/Resetslice';
-import { Helmet } from "react-helmet-async";
+// import { Helmet } from "react-helmet-async";
 
 
 type ForgetPasswordForm = {
@@ -28,8 +28,8 @@ export default function ForgetPassword() {
     });
 
     const form = useForm<ForgetPasswordForm>({
-    defaultValues: { email: '' },
-    resolver: zodResolver(schema),
+        defaultValues: { email: '' },
+        resolver: zodResolver(schema),
     });
 
     const { register, handleSubmit, formState } = form;
@@ -38,17 +38,17 @@ export default function ForgetPassword() {
 
     const mutation = useMutation<User, Error, ForgetPasswordForm>({
         mutationFn: async (values) => {
-        const res = await axios.get<User[]>(
-            'https://68e4e1228e116898997d6e79.mockapi.io/signup'
-        );
-        const users = res.data;
-        const foundUser = users.find((u) => u.email === values.email);
-        if (!foundUser) throw new Error('Email not found');
-        return { id: foundUser.id };
+            const res = await axios.get<User[]>(
+                'https://68e4e1228e116898997d6e79.mockapi.io/signup'
+            );
+            const users = res.data;
+            const foundUser = users.find((u) => u.email === values.email);
+            if (!foundUser) throw new Error('Email not found');
+            return { id: foundUser.id };
         },
         onSuccess: (data) => {
-        dispatch(setresetuser(data));
-        navigate('/reset');
+            dispatch(setresetuser(data));
+            navigate('/reset');
         },
     });
 
@@ -58,74 +58,74 @@ export default function ForgetPassword() {
 
     return (
         <>
-        <Helmet>
-            <title>ForgetPassword</title>
+            {/* <Helmet>
+                <title>ForgetPassword</title>
                 <meta
                     name="description"
                     content="Explore our delicious burger menu at Burgerizza. Burgers, sides, drinks, and more!"
                 />
-        </Helmet>
+            </Helmet> */}
 
-        <div className=" min-vh-100 d-flex justify-content-center align-items-center">
+            <div className=" min-vh-100 d-flex justify-content-center align-items-center">
 
-        <div className="container p-0 rounded" style={{ minHeight: '400px' }}>
+                <div className="container p-0 rounded" style={{ minHeight: '400px' }}>
 
-                <div className="row align-items-center h-100">
+                    <div className="row align-items-center h-100">
 
-                <div className="d-flex justify-content-center align-items-center h-100">
-                <div className="reset_form p-4 rounded w-50">
+                        <div className="d-flex justify-content-center align-items-center h-100">
+                            <div className="reset_form p-4 rounded w-50">
 
-                        <h2 className="text-center mb-5 text-danger fw-bold">
-                        Forget Password
-                        </h2>
+                                <h2 className="text-center mb-5 text-danger fw-bold">
+                                    Forget Password
+                                </h2>
 
-                        <form onSubmit={handleSubmit(handleForget)}>
-                            {mutation.isError ? (
-                                <p className="alert alert-danger p-1 mt-1 text-center">
-                                {(mutation.error as Error).message}
-                                </p>
-                            ) : (
-                                ''
-                            )}
+                                <form onSubmit={handleSubmit(handleForget)}>
+                                    {mutation.isError ? (
+                                        <p className="alert alert-danger p-1 mt-1 text-center">
+                                            {(mutation.error as Error).message}
+                                        </p>
+                                    ) : (
+                                        ''
+                                    )}
 
-                            <div className="login_input mb-4">
-                                <input
-                                type="email"
-                                {...register('email')}
-                                className="form-control"
-                                id="floatingEmailInput"
-                                placeholder="name@example.com"
-                                />
-                                {/* <label htmlFor="floatingEmailInput">Email address</label> */}
-                                {formState.errors.email && (
-                                <p className="alert_error">
-                                    {formState.errors.email.message}
-                                </p>
-                                )}
+                                    <div className="login_input mb-4">
+                                        <input
+                                            type="email"
+                                            {...register('email')}
+                                            className="form-control"
+                                            id="floatingEmailInput"
+                                            placeholder="name@example.com"
+                                        />
+                                        {/* <label htmlFor="floatingEmailInput">Email address</label> */}
+                                        {formState.errors.email && (
+                                            <p className="alert_error">
+                                                {formState.errors.email.message}
+                                            </p>
+                                        )}
+                                    </div>
+
+                                    <button
+                                        type="submit"
+                                        disabled={mutation.isPending}
+                                        className="btn login_btn w-100 d-flex justify-content-center align-items-center rounded-4"
+                                    >
+                                        {mutation.isPending ? (
+                                            <div className="spinner-border" role="status">
+                                                <span className="visually-hidden">Loading...</span>
+                                            </div>
+                                        ) : (
+                                            'Reset Password'
+                                        )}
+                                    </button>
+
+                                </form>
                             </div>
+                        </div>
 
-                            <button
-                                type="submit"
-                                disabled={mutation.isPending}
-                                className="btn login_btn w-100 d-flex justify-content-center align-items-center rounded-4"
-                            >
-                                {mutation.isPending ? (
-                                <div className="spinner-border" role="status">
-                                    <span className="visually-hidden">Loading...</span>
-                                </div>
-                                ) : (
-                                'Reset Password'
-                                )}
-                            </button>
 
-                        </form>
                     </div>
-                    </div>
-                
-
-                </div> 
+                </div>
             </div>
-        </div>
 
         </>
     );

@@ -1,17 +1,17 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async'; 
+// import { Helmet } from 'react-helmet-async'; 
 import Menu from '../Pages/MenuPage/MenuPage';
 
 const MenuPageComponent: React.FC = () => {
     return (
         <>
-            <Helmet>
+            {/* <Helmet>
                 <title>Menu | Admin</title>
                 <meta
                     name="description"
                     content="Explore our delicious burger menu at Burgerizza!"
                 />
-            </Helmet>
+            </Helmet> */}
 
             <div>
                 <Menu />

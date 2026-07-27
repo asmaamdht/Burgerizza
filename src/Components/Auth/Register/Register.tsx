@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+// import { Helmet } from "react-helmet-async";
 
 type RegisterFormData = {
     username: string;
@@ -76,13 +76,13 @@ const Register:React.FC = () => {
 
     return (
         <>
-        <Helmet>
+        {/* <Helmet>
             <title>Register</title>
                 <meta
                     name="description"
                     content="Welcome to Burgerizza! Discover our delicious burgers, exclusive deals, and amazing stories."
                 />
-        </Helmet>
+        </Helmet> */}
 
         <div id="login_page">
             <div className="container_box login_page">
