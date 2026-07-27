@@ -11,6 +11,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setuser } from "../../../Store/Userslice";
+import loginImg from "../../../assets/Images/login_img.png";
 
 // SweetAlert
 import { loginSuccessAlert } from '../../Sweet/SweetAlert';
@@ -93,7 +94,7 @@ const Login: React.FC = () => {
 
                     {/* صورة */}
                     <div className="login_img">
-                        <img src="/src/assets/Images/login_img.png" alt="Login" />
+                        <img src={loginImg} alt="Login" />
                     </div>
 
                     {/* Form */}
